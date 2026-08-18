@@ -46,3 +46,15 @@ Team Name:
 Ankush Kumar
 Sushil Kumar
 Bijanshu Yadav
+
+<div align="center">
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 🌱 KRISHAK SARATHI TEAM 🌱
+
+**Always ready to assist with any farming related issues.**
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+</div>
