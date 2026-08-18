@@ -5,43 +5,43 @@ const documents = [
   {
     id: 1,
     title: "Farming Guidelines",
-    date: "18 Aug 2026",
+    date: "06 Aug 2026",
     time: "10:30 AM",
     file: "/docs/Farming-Guidelines.pdf",
   },
   {
     id: 2,
     title: "Crop Information",
-    date: "18 Aug 2026",
+    date: "07 Aug 2026",
     time: "11:15 AM",
     file: "/docs/Crop-Information.pdf",
   },
   {
     id: 3,
     title: "Pest Management",
-    date: "18 Aug 2026",
-    time: "12:00 PM",
+    date: "09 Aug 2026",
+    time: "03:00 PM",
     file: "/docs/Pest-Management.pdf",
   },
   {
     id: 4,
     title: "Farmer-Review-Form-English",
-    date: "18 Aug 2026",
-    time: "10:30 AM",
+    date: "12 Aug 2026",
+    time: "09:30 AM",
     file: "/docs/Farmer-Review-Form-English.pdf",
   },
   {
     id: 5,
     title: "किसान-समीक्षा-फ़ॉर्म-हिंदी",
-    date: "18 Aug 2026",
-    time: "11:15 AM",
+    date: "14 Aug 2026",
+    time: "11:10 AM",
     file: "/docs/Farmer-Review-Form-Hindi.pdf",
   },
   {
     id: 6,
     title: "ખેડૂત સમીક્ષા ફોર્મ - ગુજરાતી",
-    date: "18 Aug 2026",
-    time: "12:00 PM",
+    date: "17 Aug 2026",
+    time: "02:00 PM",
     file: "/docs/Farmer-Review-Form-Gujarati.pdf",
   },
 ];
@@ -90,7 +90,7 @@ function Documents() {
           </span>
 
           <h1>
-            Relate to This <span>Page</span>
+            Our Documents
           </h1>
 
           <p>
