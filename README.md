@@ -46,6 +46,7 @@ Team Name:
 Ankush Kumar
 Sushil Kumar
 Bijanshu Yadav
- //====================================================================================\\
-||  KRISHAK SARATHI TEAM IS ALWAYS READY TO ASSIST WITH ANY FARMING RELATED ISSUES. 🌱  ||
- \\====================================================================================//
+◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇
+                      🌱  KRISHAK SARATHI TEAM  🌱
+         IS ALWAYS READY TO ASSIST WITH ANY FARMING RELATED ISSUES.
+◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇
