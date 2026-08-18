@@ -1,0 +1,805 @@
+{
+  "about": {
+    "mission": {
+      "text1": "At Krishak Sarathi, our mission is to empower farmers across India by providing them with accessible, real-time, and AI-driven agricultural insights. We believe that language and technology should never be a barrier to maximizing crop yield and securing fair market prices.",
+      "text2": "Through voice-first interfaces and localized AI, we bring expert agronomy directly to the hands of the farmers who need it most.",
+      "title": "Our Mission"
+    },
+    "stats": {
+      "ai": "AI Availability",
+      "crops": "Crops Monitored",
+      "farmers": "Farmers Empowered",
+      "languages": "Languages Supported"
+    },
+    "story": {
+      "text": "Krishak Sarathi was born out of a simple observation: while agricultural science was advancing rapidly, the average farmer was still relying on outdated information and middlemen to make critical decisions. Our founding team of technologists and agronomists came together to build a platform that talks to farmers in their own language—literally.",
+      "title": "Why We Started"
+    },
+    "subtitle": "Bridging the gap between technology and traditional farming.",
+    "title": "About Krishak Sarathi"
+  },
+  "aiAdvisor": {
+    "autoLanguage": "Auto-detect",
+    "chat": {
+      "greeting": "Hello! I am your AI Crop Advisor. How can I help you today?",
+      "response": "Based on your query, I recommend checking the soil moisture levels and applying NPK 19:19:19."
+    },
+    "clearChat": "New chat",
+    "errorReply": "Sorry, I could not reach the AI advisor. Please check your connection and try again.",
+    "languageHint": "Write in any of the 8 languages — the reply follows your language.",
+    "languageLabel": "Reply language:",
+    "listen": "Listen",
+    "placeholder": "Type your question here...",
+    "subtitle": "Type your farming queries to get instant AI assistance.",
+    "thinking": "Thinking...",
+    "title": "AI Chat Advisor"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "changeLanguage": "Change language",
+    "close": "Close",
+    "delete": "Delete",
+    "error": "Something went wrong. Please try again.",
+    "loading": "Loading...",
+    "loggedOut": "You have been logged out",
+    "logoAlt": "Krishak Sarathi Logo",
+    "logout": "Logout",
+    "retry": "Try Again",
+    "save": "Save",
+    "saveChanges": "Save Changes",
+    "search": "Search",
+    "sources": "Sources",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "toggleTheme": "Toggle Dark Mode"
+  },
+  "contact": {
+    "cards": {
+      "email": {
+        "text": "support@krishaksarathi.com\npartnerships@krishaksarathi.com",
+        "title": "Email Us"
+      },
+      "office": {
+        "text": "123 Agri-Tech Park, Rajkot, Gujarat 360003",
+        "title": "Our Office"
+      },
+      "phone": {
+        "text": "Toll Free: 1800 123 4567\nMon-Sat (9:00 AM - 6:00 PM)",
+        "title": "Phone Support"
+      }
+    },
+    "form": {
+      "contactLabel": "Email / Phone",
+      "contactPlaceholder": "Enter your email or phone number",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Type your message here...",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Enter your name",
+      "subjectLabel": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "submit": "Send Message",
+      "successText": "Your message has been sent successfully. Our team will get back to you soon.",
+      "successTitle": "Thank you!",
+      "title": "Send us a Message"
+    },
+    "subtitle": "Have a question or need assistance? We're here to help.",
+    "title": "Contact Us"
+  },
+  "cropCard": {
+    "soil": "{{type}} Soil"
+  },
+  "cropLibrary": {
+    "duration": {
+      "days": "{{count}} Days",
+      "months": "{{count}} Months"
+    },
+    "noResults": "No crops found matching your criteria.",
+    "searchPlaceholder": "Search crops by name...",
+    "season": "Season:",
+    "seasons": {
+      "all": "All",
+      "kharif": "Kharif",
+      "rabi": "Rabi",
+      "zaid": "Zaid"
+    },
+    "subtitle": "Comprehensive guide for sowing, irrigation, and harvesting.",
+    "title": "Crop Library",
+    "viewGuide": "View Full Guide"
+  },
+  "crops": {
+    "bajra": "Pearl Millet (Bajra)",
+    "chickpea": "Chickpea (Gram)",
+    "cotton": "Cotton",
+    "groundnut": "Groundnut",
+    "maize": "Maize",
+    "mustard": "Mustard",
+    "potato": "Potato",
+    "rice": "Rice (Paddy)",
+    "soybean": "Soybean",
+    "sugarcane": "Sugarcane",
+    "tomato": "Tomato",
+    "wheat": "Wheat"
+  },
+  "diseaseDetection": {
+    "analyze": "Analyze Crop",
+    "analyzing": "Analyzing Image...",
+    "changeImage": "Click to change image",
+    "confidence": "Confidence",
+    "dropHere": "Click or Drag image here",
+    "emptyResult": "Select your crop, upload an image, and click analyze to see results here.",
+    "previewAlt": "Crop Preview",
+    "remedy": "Recommended Remedy",
+    "resultTitle": "Diagnosis Result",
+    "scanning": "AI is scanning your crop...",
+    "selectCrop": "Select a crop...",
+    "severity": "Severity",
+    "subtitle": "Upload a photo of your infected crop leaf for instant diagnosis.",
+    "supports": "Supports JPG, PNG (Max 5MB)",
+    "title": "AI Disease Detection",
+    "uploadTitle": "Upload Image",
+    "whichCrop": "Which crop is this?"
+  },
+  "faq": {
+    "items": {
+      "q1": {
+        "answer": "Simply tap the microphone button on the Home or Voice Advisor page, speak your query in your local language (e.g., 'What is the price of wheat today?'), and the AI will respond with the answer instantly.",
+        "question": "How do I use the Voice Advisor?"
+      },
+      "q2": {
+        "answer": "Yes! The core features of Krishak Sarathi, including Voice Advisor, Weather updates, and Market Prices, are completely free for farmers.",
+        "question": "Is Krishak Sarathi free to use?"
+      },
+      "q3": {
+        "answer": "Our AI model is trained on thousands of crop images and is highly accurate. However, we always recommend consulting a local agronomist for severe outbreaks.",
+        "question": "How accurate is the Disease Detection feature?"
+      },
+      "q4": {
+        "answer": "We support English, Hindi, Gujarati, Marathi, Bengali, Telugu, Tamil, Kannada and Punjabi. You can change your preference using the globe icon in the top header.",
+        "question": "What languages are currently supported?"
+      },
+      "q5": {
+        "answer": "The market prices are updated in real-time during APMC working hours based on live data feeds from national agricultural markets.",
+        "question": "How often are the Mandi market prices updated?"
+      }
+    },
+    "subtitle": "Find quick answers to common questions about Krishak Sarathi.",
+    "title": "Frequently Asked Questions"
+  },
+  "footer": {
+    "about": "Empowering farmers with AI-driven voice advisory, real-time weather, and market prices in multiple languages.",
+    "bottomLinks": {
+      "faq": "FAQ",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions"
+    },
+    "contactUs": {
+      "email": "Email: support@krishaksarathi.com",
+      "location": "Location: Rajkot, Gujarat",
+      "phone": "Phone: +91 1800 123 4567",
+      "pin": "Pin Code: 360003",
+      "telephone": "Telephone: +91 1800 123",
+      "title": "Contact Us"
+    },
+    "copyright": "© {{year}} Krishak Sarathi - Voice Crop Advisor. All rights reserved.",
+    "meetTeam": "Meet My Team",
+    "quickLinks": {
+      "about": "About Us",
+      "contact": "Contact Us",
+      "faq": "FAQ",
+      "privacy": "Privacy Policy",
+      "services": "Services",
+      "survey": "Farmer Survey",
+      "terms": "Terms & Conditions",
+      "title": "Quick Links"
+    },
+    "resources": {
+      "aiAdvisor": "AI Advisor",
+      "cropLibrary": "Crop Library",
+      "marketPrices": "Market Prices",
+      "schemes": "Govt. Schemes",
+      "settings": "Settings",
+      "title": "Resources",
+      "voiceAdvisor": "Voice Advisor",
+      "weather": "Weather"
+    }
+  },
+  "header": {
+    "login": "Login",
+    "nav": {
+      "about": "About",
+      "aiAdvisor": "AI Advisor",
+      "contact": "Contact",
+      "home": "Home",
+      "marketPrices": "Market Prices",
+      "schemes": "Schemes",
+      "services": "Services",
+      "voiceAdvisor": "Voice Advisor",
+      "weather": "Weather"
+    },
+    "register": "Register",
+    "searchPlaceholder": "Search crops, prices, schemes...",
+    "title1": "Krishak ",
+    "title2": "Sarathi"
+  },
+  "home": {
+    "dashboard": {
+      "crop": "Recommended Crop",
+      "duration": "{{days}} Days",
+      "scheme": "Top Govt Scheme",
+      "subtitle": "Your daily farming insights at a glance",
+      "title": "Dashboard Overview",
+      "weather": "Current Weather"
+    },
+    "features": {
+      "ai": {
+        "text": "Smart crop and fertilizer suggestions based on soil and weather.",
+        "title": "AI Recommendations"
+      },
+      "disease": {
+        "text": "Upload a photo of your crop to instantly identify diseases.",
+        "title": "Disease Detection"
+      },
+      "market": {
+        "text": "Real-time Mandi rates to help you sell better.",
+        "title": "Market Prices"
+      },
+      "title": "Why Choose Krishak Sarathi?",
+      "voice": {
+        "text": "Just speak to get answers in your language.",
+        "title": "Voice Commands"
+      }
+    },
+    "hero": {
+      "micText": "Tap to Speak",
+      "primaryButton": "Ask Krishak Sarathi",
+      "secondaryButton": "Explore Services",
+      "subtitle": "Get real-time farming advice, weather updates, and market prices in your local language just by speaking!",
+      "titlePart1": "Your AI-Powered",
+      "titlePart2": "Voice Crop Advisor"
+    }
+  },
+  "login": {
+    "emailPlaceholder": "Email Address",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "orContinue": "Or continue with",
+    "passwordPlaceholder": "Password",
+    "rememberMe": "Remember me",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "subtitle": "Login to access your personalized farming dashboard.",
+    "welcome": "Welcome Back",
+    "welcomeBack": "Welcome back, {{name}}!"
+  },
+  "marketPrices": {
+    "data": {
+      "ahmedabad": "Ahmedabad",
+      "bengaluru": "Bengaluru",
+      "cotton": "Cotton",
+      "gujarat": "Gujarat",
+      "karnataka": "Karnataka",
+      "ludhiana": "Ludhiana",
+      "maharashtra": "Maharashtra",
+      "nashik": "Nashik",
+      "onion": "Onion",
+      "pune": "Pune",
+      "punjab": "Punjab",
+      "rice": "Rice (Paddy)",
+      "tomato": "Tomato",
+      "wheat": "Wheat"
+    },
+    "filters": {
+      "all": "All",
+      "commodity": "Commodity",
+      "state": "State"
+    },
+    "searchLabel": "Search Mandi / Crop",
+    "searchPlaceholder": "Search commodity or market...",
+    "subtitle": "Real-time simulated APMC / Mandi rates per Quintal (100 kg)",
+    "table": {
+      "commodity": "Commodity",
+      "falling": "Falling",
+      "liveModal": "Live Modal Price (₹)",
+      "maxPrice": "Max Price (₹)",
+      "minPrice": "Min Price (₹)",
+      "noData": "No data found for selected filters.",
+      "rising": "Rising",
+      "stateMarket": "State & Market",
+      "trend": "Trend"
+    },
+    "tickerTitle": "LIVE MANDI RATES",
+    "title": "Agricultural Market Prices"
+  },
+  "news": {
+    "text": "Agriculture news and updates will appear here soon.",
+    "title": "News"
+  },
+  "notifications": {
+    "allCaughtUp": "All Caught Up!",
+    "clearAll": "Clear All",
+    "loading": "Loading notifications...",
+    "new": "New",
+    "noNewNotifs": "You have no new notifications.",
+    "notif1Msg": "Heavy rainfall expected in your area tomorrow. Please secure harvested crops.",
+    "notif1Title": "Heavy Rain Alert",
+    "notif2Msg": "The market price for Wheat has increased by ₹50/quintal at your local mandi.",
+    "notif2Title": "Wheat Price Updated",
+    "notif3Msg": "High humidity is increasing the risk of aphids in your registered crops.",
+    "notif3Title": "Pest Risk Warning",
+    "notif4Msg": "Your farm details have been successfully saved.",
+    "notif4Title": "Profile Updated",
+    "time1": "10 mins ago",
+    "time2": "2 hours ago",
+    "time3": "1 day ago",
+    "time4": "2 days ago",
+    "title": "Notifications"
+  },
+  "pipeline": {
+    "completion": "Completion",
+    "delivered": "Delivered",
+    "stagesCleared": "Stages cleared",
+    "status": "Status",
+    "title": "Project Pipeline"
+  },
+  "privacy": {
+    "lastUpdated": "Last Updated: July 2026",
+    "sections": {
+      "dataSecurity": {
+        "text": "The security of your data is important to us. We implement standard security measures to prevent unauthorized access, alteration, disclosure, or destruction of your personal information. However, remember that no method of transmission over the Internet is 100% secure.",
+        "title": "3. Data Security"
+      },
+      "infoCollection": {
+        "farmingDataLabel": "Farming Data:",
+        "farmingDataValue": "Crop types, soil types, and images uploaded for disease detection.",
+        "intro": "When you use Krishak Sarathi, we may collect the following types of information:",
+        "personalDataLabel": "Personal Data:",
+        "personalDataValue": "Name, phone number, and location (to provide accurate weather and market data).",
+        "title": "1. Information We Collect",
+        "usageDataLabel": "Usage Data:",
+        "usageDataValue": "Voice queries and interactions with our AI to improve our models."
+      },
+      "sharing": {
+        "text": "We do not sell or rent your personal data to third parties. We may share anonymized, aggregated farming data with agricultural research institutions to help improve national farming practices.",
+        "title": "4. Sharing Your Data"
+      },
+      "useOfInfo": {
+        "intro": "We use the collected data for various purposes:",
+        "item1": "To provide and maintain our Service.",
+        "item2": "To personalize weather forecasts and market prices based on your location.",
+        "item3": "To improve the accuracy of our AI Voice Advisor and Disease Detection models.",
+        "item4": "To notify you about changes to our Service.",
+        "title": "2. How We Use Your Information"
+      }
+    },
+    "title": "Privacy Policy"
+  },
+  "profile": {
+    "accountPreferences": "Account Preferences",
+    "activities": {
+      "act1": "Checked Weather Forecast",
+      "act2": "Analyzed Crop Disease",
+      "act3": "Updated Farm Details"
+    },
+    "analyses": "Analyses",
+    "editProfile": "Edit Profile Details",
+    "farmSize": "Farm Size",
+    "goToLogin": "Go to Login",
+    "memberSince": "Member Since",
+    "notLoggedIn": "You're not logged in",
+    "overview": "Overview",
+    "primaryCrops": "Primary Crops",
+    "recentActivity": "Recent Activity",
+    "saved": "Saved",
+    "settings": "Settings",
+    "signInPrompt": "Please sign in to view your farmer profile.",
+    "signOut": "Sign Out"
+  },
+  "register": {
+    "creating": "Creating account...",
+    "errors": {
+      "passwordMismatch": "Passwords do not match",
+      "passwordTooShort": "Password must be at least 6 characters"
+    },
+    "fields": {
+      "confirmPassword": "Confirm Password",
+      "email": "Email Address",
+      "farmSize": "Farm Size (e.g. 5 Acres)",
+      "fullName": "Full Name",
+      "location": "Location (e.g. Rajkot, Gujarat)",
+      "password": "Password (min 6 characters)",
+      "phone": "Phone Number",
+      "primaryCrops": "Primary Crops (e.g. Wheat, Rice)"
+    },
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "subtitle": "Join thousands of farmers using Krishak Sarathi",
+    "success": "Welcome to Krishak Sarathi, {{name}}!",
+    "title": "Create Your Account"
+  },
+  "schemes": {
+    "applyNow": "Apply Now",
+    "benefits": "Benefits",
+    "cards": {
+      "irrigation": {
+        "deadline": "Ongoing",
+        "description": "Aims to improve farm productivity and ensure better utilization of the resources in the country through micro-irrigation.",
+        "title": "PM Krishi Sinchai Yojana"
+      },
+      "kcc": {
+        "deadline": "Ongoing",
+        "description": "Provides adequate and timely credit support from the banking system under a single window.",
+        "title": "Kisan Credit Card (KCC)"
+      },
+      "organic": {
+        "deadline": "15th Aug 2026",
+        "description": "Promotes commercial organic farming through certified organic farming approaches.",
+        "title": "Paramparagat Krishi Vikas Yojana"
+      },
+      "pmKisan": {
+        "deadline": "Ongoing",
+        "description": "Under this scheme, all landholding farmers families are provided the financial benefit of ₹6000 per annum.",
+        "title": "PM Kisan Samman Nidhi"
+      },
+      "pmfby": {
+        "deadline": "31st July 2026",
+        "description": "Provides insurance coverage and financial support to farmers in the event of failure of any of the notified crops.",
+        "title": "Pradhan Mantri Fasal Bima Yojana (PMFBY)"
+      },
+      "soilHealth": {
+        "deadline": "Ongoing",
+        "description": "Issued to farmers which will carry crop-wise recommendations of nutrients and fertilizers required for the individual farms.",
+        "title": "Soil Health Card Scheme"
+      }
+    },
+    "categories": {
+      "farmingAssistance": "Farming Assistance",
+      "financial": "Financial",
+      "infrastructure": "Infrastructure",
+      "insurance": "Insurance"
+    },
+    "deadlineLabel": "Deadline",
+    "eligibility": "Eligibility",
+    "filters": {
+      "all": "All",
+      "categoryLabel": "Category:"
+    },
+    "loading": "Loading schemes...",
+    "noResults": "No schemes found matching your criteria.",
+    "searchPlaceholder": "Search schemes by name or keyword...",
+    "subtitle": "Find and apply for subsidies, insurance, and financial aid.",
+    "title": "Government Schemes for Farmers",
+    "viewDetails": "View Details"
+  },
+  "services": {
+    "cards": {
+      "ai": {
+        "description": "Text-based AI assistant for detailed crop recommendations and problem solving.",
+        "title": "AI Chat Assistant"
+      },
+      "cropLibrary": {
+        "description": "Detailed information on sowing, irrigation, and harvesting for all major crops.",
+        "title": "Crop Library"
+      },
+      "disease": {
+        "description": "Upload a picture of your infected crop to instantly identify the disease and get remedies.",
+        "title": "Disease Detection"
+      },
+      "market": {
+        "description": "Track Mandi rates across the country to sell your produce at the best price.",
+        "title": "Live Market Prices"
+      },
+      "voice": {
+        "description": "Ask questions in your local language using voice and get instant farming advice.",
+        "title": "Voice Advisor"
+      },
+      "weather": {
+        "description": "Farm-specific weather forecasts including soil moisture and evapotranspiration data.",
+        "title": "Real-time Weather"
+      }
+    },
+    "explore": "Explore Service →",
+    "subtitle": "Comprehensive digital tools designed to maximize your farming yield.",
+    "title": "Our Services"
+  },
+  "settings": {
+    "appearance": {
+      "dark": "Dark Mode",
+      "light": "Light Mode",
+      "subtitle": "Customize how Krishak Sarathi looks on your device.",
+      "title": "Appearance"
+    },
+    "language": {
+      "note": "Note: Changing this will immediately update the app language.",
+      "primary": "Primary Language",
+      "title": "Language Preferences"
+    },
+    "notifications": {
+      "email": "Email Notifications",
+      "push": "Push Notifications",
+      "save": "Save Preferences",
+      "sms": "SMS Alerts (Weather & Market)",
+      "title": "Notification Preferences"
+    },
+    "profile": {
+      "farmSize": "Farm Size",
+      "fullName": "Full Name",
+      "location": "Location",
+      "primaryCrops": "Primary Crops",
+      "title": "Profile Settings"
+    },
+    "security": {
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "title": "Security Settings",
+      "update": "Update Password"
+    },
+    "subtitle": "Manage your account preferences and configurations",
+    "tabs": {
+      "appearance": "Appearance",
+      "language": "Language",
+      "notifications": "Notifications",
+      "profile": "Profile",
+      "security": "Security"
+    },
+    "title": "Settings"
+  },
+  "slider": {
+    "cropManagement": {
+      "subtitle": "Get the best yield with expert advice.",
+      "title": "Crop Management"
+    },
+    "realtimeInsights": {
+      "subtitle": "Weather and market prices at your fingertips.",
+      "title": "Real-time Insights"
+    },
+    "smartAgriculture": {
+      "subtitle": "Empowering farmers with modern tools.",
+      "title": "Smart Agriculture"
+    }
+  },
+  "soilTypes": {
+    "black": "Black",
+    "blackCotton": "Black Cotton",
+    "blackSoil": "Well-drained Black Soil",
+    "clay": "Clay",
+    "deepLoam": "Deep Loam",
+    "loamy": "Loamy",
+    "sandy": "Sandy",
+    "sandyLoam": "Sandy Loam",
+    "sandyToClayLoam": "Sandy Loam to Clay Loam",
+    "wellDrainedLoam": "Well-drained Loam"
+  },
+  "survey": {
+    "crops": {
+      "cotton": "Cotton",
+      "maize": "Maize",
+      "other": "Other",
+      "rice": "Rice / Paddy",
+      "select": "Select a crop",
+      "soyabean": "Soyabean",
+      "sugarcane": "Sugarcane",
+      "wheat": "Wheat"
+    },
+    "draftSaved": "Draft saved on this device",
+    "fields": {
+      "challenge": "What is your biggest farming challenge right now?",
+      "challengePlaceholder": "Briefly describe your challenges (e.g. erratic weather, pest attacks, market prices...)",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your name",
+      "location": "Location (State/District)",
+      "locationPlaceholder": "e.g. Maharashtra, Pune",
+      "primaryCrop": "Primary Crop Cultivated",
+      "suggestions": "Any suggestions for new features?",
+      "suggestionsPlaceholder": "Tell us what we should build next...",
+      "usefulness": "How useful do you find the Krishak Sarathi AI Advisor?"
+    },
+    "progress": "{{answered}} of {{total}} answered",
+    "responseCount": "{{count}} farmers have shared their feedback",
+    "slides": {
+      "challenges": {
+        "subtitle": "Tell us what the season has been like where you farm.",
+        "title": "Your Crop, Your Challenges"
+      },
+      "next": {
+        "subtitle": "Your suggestions decide which features we work on first.",
+        "title": "Shaping What We Build Next"
+      },
+      "voices": {
+        "subtitle": "Every answer helps us build tools that actually fit your farm.",
+        "title": "Voices From the Field"
+      }
+    },
+    "submit": "Submit Survey",
+    "subtitle": "Help us understand your needs to improve Krishak Sarathi services",
+    "success": {
+      "again": "Submit Another Response",
+      "text": "Your responses have been successfully recorded. We appreciate your time and valuable feedback.",
+      "title": "Thank You!"
+    },
+    "title": "Farmer Survey 2026",
+    "usefulness": {
+      "notUsed": "Haven't Used It Yet",
+      "notVery": "Not Very Useful",
+      "somewhat": "Somewhat Useful",
+      "very": "Very Useful"
+    }
+  },
+  "team": {
+    "card": {
+      "projectRole": "Project Role",
+      "skills": "Skills"
+    },
+    "developers": {
+      "ankush": {
+        "degree": "B.Tech Computer Engineering",
+        "designation": "CloudStack.dev",
+        "role": "Documentation, Presentation Lead & Research Analyst",
+        "skills": [
+          "Documentation",
+          "Research",
+          "Presentation",
+          "Cloud",
+          "GitHub",
+          "Project Planning"
+        ],
+        "university": "Marwadi University"
+      },
+      "bijanshu": {
+        "degree": "B.Tech Computer Engineering",
+        "designation": "AI / ML Automation Engineer",
+        "role": "Backend Development, AI/ML & System Integration",
+        "skills": [
+          "Python",
+          "Backend",
+          "AI",
+          "Machine Learning",
+          "Automation",
+          "API Integration"
+        ],
+        "university": "Marwadi University"
+      },
+      "sushil": {
+        "degree": "B.Tech Computer Engineering",
+        "designation": "Full Stack Developer",
+        "role": "Frontend Development, UI/UX Design & Testing",
+        "skills": [
+          "React.js",
+          "Node.js",
+          "MongoDB",
+          "REST API",
+          "UI/UX",
+          "Testing"
+        ],
+        "university": "Marwadi University"
+      }
+    },
+    "guide": {
+      "badge": "Project Guide & Mentor",
+      "department": "Department of Computer Engineering",
+      "designation": "Assistant Professor",
+      "expertise": [
+        "Project Mentorship",
+        "System Design",
+        "Research Guidance",
+        "AI & Machine Learning",
+        "Academic Review"
+      ],
+      "expertiseTitle": "Areas of Guidance",
+      "message": "Our team is deeply grateful for the continuous mentorship behind Krishak Sarathi — from refining the system architecture and guiding our research direction, to keeping the project firmly aligned with the real needs of farmers.",
+      "name": "Prof. Niraj",
+      "sectionSubtitle": "The mentorship that shaped Krishak Sarathi at every milestone.",
+      "sectionTitle": "Under the Guidance of",
+      "university": "Marwadi University"
+    },
+    "hero": {
+      "text": "Krishak Sarathi is proudly developed by a passionate team of Computer Engineering students dedicated to empowering farmers through Artificial Intelligence, Cloud Technologies and Modern Web Development.",
+      "title": "Meet Our Development Team"
+    },
+    "project": {
+      "text": "Krishak Sarathi is an AI-powered Smart Agriculture platform developed to assist farmers with multilingual voice support, weather forecasting, market prices, crop recommendations, government schemes, disease identification and intelligent agricultural guidance.",
+      "title": "About Krishak Sarathi"
+    }
+  },
+  "terms": {
+    "lastUpdated": "Last Updated: July 2026",
+    "sections": {
+      "acceptance": {
+        "text": "By accessing or using Krishak Sarathi (the \"Service\"), you agree to be bound by these Terms & Conditions. If you disagree with any part of the terms, you may not access the Service.",
+        "title": "1. Acceptance of Terms"
+      },
+      "accounts": {
+        "text": "When you create an account with us, you must provide accurate, complete, and current information. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account.",
+        "title": "3. User Accounts"
+      },
+      "aiAdvice": {
+        "text": "The disease detection and AI advisory features utilize machine learning algorithms. While we strive for accuracy, the AI may occasionally provide incorrect suggestions. Krishak Sarathi is not liable for crop loss resulting from actions taken based solely on AI advice.",
+        "title": "4. AI Advice Disclaimer"
+      },
+      "changes": {
+        "text": "We reserve the right to modify or replace these Terms at any time. We will provide notice of any significant changes via our platform.",
+        "title": "5. Changes to Terms"
+      },
+      "service": {
+        "text": "Krishak Sarathi provides agricultural advisory, market prices, and weather data. This information is provided for educational and informational purposes only and should not be construed as guaranteed professional advice. Farmers are encouraged to consult local experts before making major financial decisions.",
+        "title": "2. Use of Service"
+      }
+    },
+    "title": "Terms & Conditions"
+  },
+  "voiceAdvisor": {
+    "adviceLabel": "🤖 Krishak Sarathi Voice Advice:",
+    "answeringIn": "Answering in",
+    "errorReply": "Sorry, I could not process that. Please try again.",
+    "languageHint": "Ask in any of these languages — the answer comes back in the same language.",
+    "languageLabel": "I will speak in:",
+    "listenAgain": "Listen Again",
+    "missingVoice": "Your browser has no {{language}} voice installed, so the reply is read with the closest available voice. Install the {{language}} language pack for the best result.",
+    "noSpeechSupport": "Your browser does not support speech recognition. Try Google Chrome on desktop/Android.",
+    "prompts": {
+      "chip1": "What is the current mandi price for wheat in Pune?",
+      "chip2": "When should I water my tomato crop?",
+      "chip3": "Are there any subsidies for drip irrigation?",
+      "title": "Try asking:"
+    },
+    "status": {
+      "idle": "Tap the microphone and ask your question",
+      "listening": "I'm listening...",
+      "speaking": "Speaking Output...",
+      "thinking": "Thinking & Analyzing..."
+    },
+    "stop": "Stop Speaking",
+    "stopShort": "Stop",
+    "subtitle": "Speak naturally in your preferred language to get instant farming advice.",
+    "title": "Voice Advisor",
+    "transcript": {
+      "listening": "Listening...",
+      "response": "Based on your soil type and current weather, I recommend applying urea fertilizer tomorrow morning."
+    },
+    "typePlaceholder": "Or type your question here and press Enter...",
+    "youAsked": "You Asked:"
+  },
+  "weather": {
+    "defaultLocation": "Pune, Maharashtra",
+    "forecast": {
+      "hourly": "Hourly Forecast",
+      "weekly": "7-Day Outlook"
+    },
+    "geoDenied": "Could not access your location",
+    "geoUnsupported": "Geolocation is not supported by your browser",
+    "hourly": {
+      "10am": "10 AM",
+      "11am": "11 AM",
+      "12pm": "12 PM",
+      "1pm": "1 PM",
+      "2pm": "2 PM",
+      "3pm": "3 PM"
+    },
+    "live": "LIVE",
+    "liveUpdates": "Live updates: {{time}}",
+    "metrics": {
+      "evapotranspiration": "Evapotranspiration (ET0)",
+      "humidity": "Humidity",
+      "irrigationNeeded": "Irrigation Needed",
+      "optimal": "Optimal",
+      "soilMoisture": "Soil Moisture (0-30cm)",
+      "title": "Soil & Crop Metrics",
+      "uvIndex": "UV Index",
+      "waterLoss": "High water loss expected today.",
+      "wind": "Wind"
+    },
+    "searchPlaceholder": "Search village or district...",
+    "title": "Real-Time Farm Weather",
+    "useMyLocation": "Use my location",
+    "weekly": {
+      "cloudy": "Cloudy",
+      "fri": "Fri",
+      "mon": "Mon",
+      "partlyCloudy": "Partly Cloudy",
+      "rainy": "Rainy",
+      "sunny": "Sunny",
+      "thu": "Thu",
+      "tue": "Tue",
+      "wed": "Wed"
+    }
+  }
+}

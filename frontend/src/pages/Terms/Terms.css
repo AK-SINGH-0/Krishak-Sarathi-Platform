@@ -1,0 +1,68 @@
+.terms-page, .privacy-page {
+  padding: 40px 0 60px;
+  max-width: 900px;
+}
+
+.content-panel {
+  padding: 40px 50px;
+}
+
+.content-panel h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.last-updated {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.dark-mode .last-updated {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.policy-content h3 {
+  font-size: 20px;
+  color: var(--primary-green);
+  margin-bottom: 15px;
+  margin-top: 35px;
+}
+
+.policy-content p {
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.dark-mode .policy-content p {
+  color: var(--text-light);
+}
+
+.policy-content ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.policy-content li {
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.8;
+  opacity: 0.9;
+  list-style-type: disc;
+}
+
+.dark-mode .policy-content li {
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .content-panel {
+    padding: 30px 20px;
+  }
+}

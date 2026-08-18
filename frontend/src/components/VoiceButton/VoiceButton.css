@@ -1,0 +1,54 @@
+.voice-btn-container {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+
+.voice-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4);
+  transition: background 0.3s ease;
+}
+
+.voice-btn.listening {
+  background: #e74c3c;
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4);
+}
+
+.ripple-1, .ripple-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(231, 76, 60, 0.4);
+  z-index: 1;
+}
+
+.ripple-1 {
+  animation: ripple 1.5s linear infinite;
+}
+
+.ripple-2 {
+  animation: ripple 1.5s linear infinite 0.75s;
+}
+
+@keyframes ripple {
+  0% { width: 70px; height: 70px; opacity: 1; }
+  100% { width: 150px; height: 150px; opacity: 0; }
+}

@@ -1,0 +1,10 @@
+{
+  "client": "Thunder Client",
+  "environmentName": "Krishak Sarathi - Local",
+  "name": "Krishak Sarathi - Local",
+  "default": true,
+  "data": [
+    { "name": "baseUrl", "value": "http://localhost:5000/api" },
+    { "name": "token", "value": "" }
+  ]
+}

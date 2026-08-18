@@ -1,0 +1,41 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 130px; /* Increased to account for taller 2-row sticky header */
+}
+
+/* Container Utility */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Grid Layouts */
+.grid-layout {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid-layout.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-layout.cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-layout.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-layout.cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Adjust top padding for smaller screens if navigation moves to hamburger menu */
+@media (max-width: 992px) {
+  .main-content {
+    padding-top: 90px;
+  }
+}

@@ -1,0 +1,56 @@
+.crop-library-page {
+  padding: 40px 0 60px;
+}
+
+.library-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.library-controls .search-bar {
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
+  max-width: 500px;
+  flex: 1;
+}
+
+.dark-mode .library-controls .search-bar {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.search-icon {
+  margin-left: 10px;
+  color: var(--text-muted);
+}
+
+.crop-card-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-details-btn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: -5px;
+  z-index: 1;
+}
+
+.no-results {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+  color: var(--text-muted);
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .library-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

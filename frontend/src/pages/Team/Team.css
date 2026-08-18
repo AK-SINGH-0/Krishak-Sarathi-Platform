@@ -1,0 +1,573 @@
+/* ===========================
+   TEAM PAGE
+=========================== */
+
+* {
+  box-sizing: border-box;
+}
+
+.team-page {
+  min-height: 100vh;
+  padding: 60px 8%;
+  background: linear-gradient(135deg, #eef8ec, #dff5d9, #c6efbf);
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===========================
+        HERO SECTION
+=========================== */
+
+.team-hero {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.team-logo {
+  width: 120px;
+  margin-bottom: 20px;
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+.team-hero h1 {
+  font-size: 3rem;
+  color: #1b5e20;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.team-hero p {
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.8;
+  color: #444;
+  font-size: 18px;
+}
+
+/* ===========================
+        TEAM GRID
+=========================== */
+
+.team-container {
+  display: grid;
+  /* All three members always sit on a single row on desktop */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+/* ===========================
+        CARD
+=========================== */
+
+.team-card {
+  position: relative;
+  background: rgba(255,255,255,.30);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 35px 25px;
+  overflow: hidden;
+  text-align: center;
+  transition: .4s;
+  border: 1px solid rgba(255,255,255,.4);
+  box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.team-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 45px rgba(0,0,0,.18);
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(76,175,80,.12);
+  border-radius: 50%;
+  top: -90px;
+  right: -90px;
+}
+
+.team-card::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: rgba(139,195,74,.15);
+  border-radius: 50%;
+  bottom: -70px;
+  left: -70px;
+}
+
+/* ===========================
+      NUMBER CIRCLE
+=========================== */
+
+.team-number {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#2e7d32,#8bc34a);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulseCircle 2s infinite;
+  box-shadow: 0 0 25px rgba(76,175,80,.45);
+}
+
+/* ===========================
+      PROFILE CIRCLE
+=========================== */
+
+.profile-circle {
+  width: 95px;
+  height: 95px;
+  margin: 25px auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#43a047,#66bb6a);
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===========================
+      TEXT
+=========================== */
+
+.team-card h2 {
+  color: #1b5e20;
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.team-card h4 {
+  color: #43a047;
+  margin-bottom: 15px;
+}
+
+.degree {
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.university {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* ===========================
+      ROLE BOX
+=========================== */
+
+.role-box {
+  background: rgba(255,255,255,.55);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 25px;
+}
+
+.role-box h5 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.role-box p {
+  color: #555;
+  line-height: 1.7;
+}
+
+/* ===========================
+      SKILLS
+=========================== */
+
+.skill-title {
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skill-chip {
+  background: linear-gradient(135deg,#4caf50,#81c784);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.skill-chip:hover {
+  transform: scale(1.08);
+}
+
+/* ===========================
+      PROJECT INFO
+=========================== */
+
+.project-info {
+  margin-top: 80px;
+  background: rgba(255,255,255,.35);
+  backdrop-filter: blur(12px);
+  padding: 45px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.project-info h2 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.project-info p {
+  color: #555;
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+/* ===========================
+      ANIMATIONS
+=========================== */
+
+@keyframes pulseCircle {
+
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(76,175,80,.45);
+  }
+
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 35px rgba(76,175,80,.7);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(76,175,80,.45);
+  }
+
+}
+
+@keyframes floatLogo {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media (max-width: 992px) {
+
+  .team-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .team-container {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 35px 25px;
+  }
+
+  .guide-details {
+    align-items: center;
+  }
+
+  .guide-meta {
+    justify-content: center;
+  }
+
+  .guide-skill-list {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .team-page {
+    padding: 40px 20px;
+  }
+
+  .team-container {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card {
+    padding: 30px 20px;
+  }
+
+  .team-hero h1 {
+    font-size: 2rem;
+  }
+
+  .project-info {
+    padding: 30px 20px;
+  }
+
+}
+.profile-circle{
+    width:150px;
+    height:150px;
+    margin:25px auto;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid #4CAF50;
+    box-shadow:0 0 18px rgba(76,175,80,.4);
+    transition:.4s;
+}
+
+.profile-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.team-card:hover .profile-circle{
+    transform:scale(1.08) rotate(5deg);
+    box-shadow:0 0 30px rgba(76,175,80,.7);
+}
+
+/* ===========================
+      SOCIAL LINKS
+=========================== */
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 17px;
+  color: #2e7d32;
+  background: rgba(255, 255, 255, .65);
+  border: 1px solid rgba(76, 175, 80, .3);
+  transition: .3s;
+}
+
+.social-links a:hover {
+  background: linear-gradient(135deg, #2e7d32, #8bc34a);
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(76, 175, 80, .45);
+}
+
+/* ===========================
+      GUIDE SECTION
+=========================== */
+
+.guide-section {
+  margin-top: 80px;
+}
+
+.guide-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.guide-heading h2 {
+  font-size: 2.2rem;
+  color: #1b5e20;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.guide-heading p {
+  color: #555;
+  font-size: 17px;
+}
+
+.guide-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 45px;
+  align-items: center;
+  background: rgba(255, 255, 255, .38);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: 28px;
+  padding: 45px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .1);
+  transition: .4s;
+}
+
+.guide-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, .16);
+}
+
+.guide-card::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: rgba(76, 175, 80, .12);
+  border-radius: 50%;
+  top: -130px;
+  right: -80px;
+}
+
+.guide-photo-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.guide-photo-ring {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #4caf50;
+  box-shadow: 0 0 25px rgba(76, 175, 80, .45);
+  transition: .4s;
+}
+
+.guide-card:hover .guide-photo-ring {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(76, 175, 80, .7);
+}
+
+.guide-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.guide-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #2e7d32, #8bc34a);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, .35);
+  white-space: nowrap;
+}
+
+.guide-details {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.guide-details h3 {
+  font-size: 2rem;
+  color: #1b5e20;
+  margin-bottom: 6px;
+}
+
+.guide-details h4 {
+  font-size: 1.15rem;
+  color: #43a047;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.guide-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.guide-meta-icon {
+  color: #4caf50;
+  flex-shrink: 0;
+}
+
+.guide-message {
+  color: #555;
+  line-height: 1.9;
+  font-size: 16px;
+  margin: 20px 0 25px;
+  padding-left: 18px;
+  border-left: 4px solid rgba(76, 175, 80, .5);
+  font-style: italic;
+}
+
+.guide-expertise h5 {
+  font-size: 17px;
+  color: #2e7d32;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.guide-skill-list {
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+
+  .guide-heading h2 {
+    font-size: 1.7rem;
+  }
+
+  .guide-photo-ring {
+    width: 170px;
+    height: 170px;
+  }
+
+  .guide-details h3 {
+    font-size: 1.6rem;
+  }
+
+  .guide-message {
+    text-align: left;
+  }
+
+}

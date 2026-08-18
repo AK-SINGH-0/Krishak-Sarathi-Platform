@@ -1,0 +1,258 @@
+.disease-page {
+  padding: 40px 0 60px;
+}
+
+.detection-grid {
+  gap: 30px;
+  align-items: stretch;
+}
+
+.upload-section, .result-section {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-section h3, .result-section h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 10px;
+}
+
+.dark-mode .upload-section h3, .dark-mode .result-section h3 {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.crop-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.crop-select-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.crop-select-group select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.dark-mode .crop-select-group select {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.upload-box {
+  flex: 1;
+  border: 2px dashed rgba(46, 204, 113, 0.5);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  background: rgba(46, 204, 113, 0.02);
+  transition: var(--transition-smooth);
+}
+
+.upload-box:hover {
+  background: rgba(46, 204, 113, 0.05);
+  border-color: var(--primary-green);
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-label {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-placeholder {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.upload-icon {
+  font-size: 48px;
+  color: var(--primary-green);
+  margin-bottom: 15px;
+}
+
+.preview-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.change-img-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.analyze-btn {
+  background: #6fa0f3;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.analyze-btn:disabled {
+  background: #6fa0f3;
+  cursor: allowed;
+  transform: none;
+}
+
+.analyze-btn:enabled {
+  background: #6fa0f3;
+  cursor: allowed;
+  transform: none;
+}
+
+.loading-spinner-small {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: rgb(14, 117, 226);
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+.empty-result {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(0,0,0,0.02);
+  border-radius: 12px;
+}
+
+.analyzing-result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scanner-line {
+  width: 100%;
+  height: 2px;
+  background: var(--primary-green);
+  position: absolute;
+  top: 0;
+  box-shadow: 0 0 10px var(--primary-green);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  50% { top: 100%; }
+  100% { top: 0; }
+}
+
+.diagnosis-report {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.warning-icon {
+  font-size: 40px;
+}
+
+.disease-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.dark-mode .disease-name {
+  color: var(--text-light);
+}
+
+.confidence-level {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.severity-badge {
+  display: inline-block;
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.remedy-box {
+  background: rgba(46, 204, 113, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-green);
+}
+
+.remedy-box h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.dark-mode .remedy-box h4 {
+  color: var(--text-light);
+}
+
+.remedy-box p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .detection-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Krishak Sarathi API",
+  "dateExported": "2026-08-05T00:00:00.000Z",
+  "version": "1.2",
+  "folders": [
+    { "_id": "f-auth", "name": "Auth" },
+    { "_id": "f-weather", "name": "Weather" },
+    { "_id": "f-ai", "name": "AI Advisor" },
+    { "_id": "f-schemes", "name": "Schemes" },
+    { "_id": "f-survey", "name": "Survey" },
+    { "_id": "f-contact", "name": "Contact" },
+    { "_id": "f-notif", "name": "Notifications" },
+    { "_id": "f-user", "name": "User" }
+  ],
+  "requests": [
+    {
+      "_id": "r-health",
+      "name": "Health Check",
+      "url": "{{baseUrl}}/health",
+      "method": "GET",
+      "sortNum": 10,
+      "headers": []
+    },
+    {
+      "_id": "r-register",
+      "containerId": "f-auth",
+      "name": "Register",
+      "url": "{{baseUrl}}/auth/register",
+      "method": "POST",
+      "sortNum": 20,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Raj Patel\",\n  \"email\": \"raj@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"9876543210\",\n  \"location\": \"Rajkot, Gujarat\",\n  \"farmSize\": \"5 Acres\",\n  \"primaryCrops\": \"Wheat, Cotton\"\n}"
+      }
+    },
+    {
+      "_id": "r-login",
+      "containerId": "f-auth",
+      "name": "Login",
+      "url": "{{baseUrl}}/auth/login",
+      "method": "POST",
+      "sortNum": 30,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"raj@example.com\",\n  \"password\": \"password123\"\n}"
+      },
+      "tests": [
+        { "type": "set-env-var", "custom": "token", "action": "setto", "value": "json.token" }
+      ]
+    },
+    {
+      "_id": "r-me",
+      "containerId": "f-auth",
+      "name": "Get Logged-in User (Me)",
+      "url": "{{baseUrl}}/auth/me",
+      "method": "GET",
+      "sortNum": 40,
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "_id": "r-weather-city",
+      "containerId": "f-weather",
+      "name": "Get Weather by City",
+      "url": "{{baseUrl}}/weather",
+      "method": "GET",
+      "sortNum": 50,
+      "params": [{ "name": "city", "value": "Rajkot" }],
+      "headers": []
+    },
+    {
+      "_id": "r-weather-latlon",
+      "containerId": "f-weather",
+      "name": "Get Weather by Lat/Lon",
+      "url": "{{baseUrl}}/weather",
+      "method": "GET",
+      "sortNum": 60,
+      "params": [
+        { "name": "lat", "value": "22.3039" },
+        { "name": "lon", "value": "70.8022" }
+      ],
+      "headers": []
+    },
+    {
+      "_id": "r-ai-chat",
+      "containerId": "f-ai",
+      "name": "AI Chat (Text/Voice)",
+      "url": "{{baseUrl}}/ai/chat",
+      "method": "POST",
+      "sortNum": 70,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"message\": \"When should I irrigate my wheat crop?\",\n  \"language\": \"en\",\n  \"mode\": \"text\"\n}"
+      }
+    },
+    {
+      "_id": "r-ai-history",
+      "containerId": "f-ai",
+      "name": "Get My Chat History",
+      "url": "{{baseUrl}}/ai/history",
+      "method": "GET",
+      "sortNum": 80,
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "_id": "r-schemes",
+      "containerId": "f-schemes",
+      "name": "Get All Schemes",
+      "url": "{{baseUrl}}/schemes",
+      "method": "GET",
+      "sortNum": 90,
+      "headers": []
+    },
+    {
+      "_id": "r-schemes-filtered",
+      "containerId": "f-schemes",
+      "name": "Search/Filter Schemes",
+      "url": "{{baseUrl}}/schemes",
+      "method": "GET",
+      "sortNum": 100,
+      "params": [
+        { "name": "search", "value": "insurance" },
+        { "name": "category", "value": "Insurance" }
+      ],
+      "headers": []
+    },
+    {
+      "_id": "r-survey",
+      "containerId": "f-survey",
+      "name": "Submit Farmer Survey",
+      "url": "{{baseUrl}}/survey",
+      "method": "POST",
+      "sortNum": 110,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"fullName\": \"Raj Patel\",\n  \"location\": \"Gujarat, Rajkot\",\n  \"primaryCrop\": \"wheat\",\n  \"biggestChallenge\": \"Erratic rainfall and pest attacks\",\n  \"advisorUsefulness\": \"very\",\n  \"suggestions\": \"Add mandi price alerts\"\n}"
+      }
+    },
+    {
+      "_id": "r-contact",
+      "containerId": "f-contact",
+      "name": "Submit Contact Form",
+      "url": "{{baseUrl}}/contact",
+      "method": "POST",
+      "sortNum": 120,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Raj Patel\",\n  \"email\": \"raj@example.com\",\n  \"subject\": \"Question about drip irrigation subsidy\",\n  \"message\": \"How do I apply for the PMKSY drip irrigation subsidy in Gujarat?\"\n}"
+      }
+    },
+    {
+      "_id": "r-notifications",
+      "containerId": "f-notif",
+      "name": "Get Notifications",
+      "url": "{{baseUrl}}/notifications",
+      "method": "GET",
+      "sortNum": 130,
+      "headers": [{ "name": "Authorization", "value": "Bearer {{token}}" }]
+    },
+    {
+      "_id": "r-update-profile",
+      "containerId": "f-user",
+      "name": "Update My Profile",
+      "url": "{{baseUrl}}/users/me",
+      "method": "PUT",
+      "sortNum": 140,
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{token}}" }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"farmSize\": \"7 Acres\",\n  \"primaryCrops\": \"Wheat, Cotton, Groundnut\"\n}"
+      }
+    }
+  ]
+}

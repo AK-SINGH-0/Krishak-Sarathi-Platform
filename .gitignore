@@ -1,0 +1,80 @@
+# ==========================================
+# KRISHAK SARATHI - GITIGNORE
+# ==========================================
+
+
+# ==========================================
+# BACKEND
+# ==========================================
+
+# Backend dependencies
+backend/node_modules/
+
+# Backend environment files
+backend/.env
+backend/.env.example
+
+
+# ==========================================
+# FRONTEND
+# ==========================================
+
+# Frontend dependencies
+frontend/node_modules/
+
+# Frontend production build
+frontend/build/
+
+# Frontend environment files
+frontend/.env
+frontend/.env.example
+
+
+# ==========================================
+# PROJECT ROOT
+# ==========================================
+
+# Do not upload start.txt
+start.txt
+
+
+# ==========================================
+# LOG FILES
+# ==========================================
+
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ==========================================
+# OPERATING SYSTEM FILES
+# ==========================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+
+# ==========================================
+# VS CODE
+# ==========================================
+
+.vscode/
+
+
+# ==========================================
+# TEMPORARY FILES
+# ==========================================
+
+*.tmp
+*.temp
+*.swp
+*.swo

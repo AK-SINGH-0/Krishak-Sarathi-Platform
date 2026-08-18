@@ -1,0 +1,254 @@
+.footer {
+  margin-top: 60px;
+  padding: 60px 0 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 50%, #A5D6A7 100%);
+}
+
+.footer-top {
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.logo-img-footer {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.footer-logo h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0;
+}
+
+.dark-mode .footer-logo h2 {
+  color: var(--text-light);
+}
+
+.footer-logo h2 span {
+  color: var(--primary-green);
+}
+
+.footer-about {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.footer-col h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-green);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: var(--transition-smooth);
+}
+
+.footer-col a:hover {
+  color: var(--primary-green);
+  padding-left: 5px;
+}
+
+.footer-col p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--primary-green);
+  color: white;
+  font-size: 16px;
+  transition: var(--transition-smooth);
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 50px;
+}
+
+.footer-bottom-links a {
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.footer-bottom-links a:hover,
+.footer-bottom-links a:focus-visible {
+  color: var(--primary-green);
+}
+
+.dark-mode .footer-bottom {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .footer-col {
+    margin-bottom: 30px;
+  }
+}
+
+/* ==========================
+      TEAM BUTTON
+========================== */
+
+.team-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-top:22px;
+
+    padding:14px 32px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    color:#fff;
+
+    background:linear-gradient(135deg,#2E7D32,#66BB6A);
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:0 0 15px rgba(76,175,80,.6);
+
+    animation:glowButton 2s infinite;
+}
+
+.team-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.45),
+        transparent
+    );
+
+    transition:.8s;
+}
+
+.team-btn:hover::before{
+
+    left:120%;
+}
+
+.team-btn:hover{
+
+    transform:translateY(-4px) scale(1.05);
+
+    box-shadow:0 0 35px rgba(76,175,80,.9);
+
+    color:#fff;
+}
+
+@keyframes glowButton{
+
+    0%{
+
+        box-shadow:0 0 10px rgba(76,175,80,.5);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 25px rgba(76,175,80,.9),
+        0 0 45px rgba(139,195,74,.6);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 10px rgba(76,175,80,.5);
+
+    }
+
+}

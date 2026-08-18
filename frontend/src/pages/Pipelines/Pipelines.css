@@ -1,0 +1,960 @@
+/* =========================================================================
+   Project Pipeline — industrial pipe rendering
+   Layout: a vertical serpentine on a 5-row grid (5 x 4 on desktop), sized so
+   the whole board lands inside one screen. Every measurement that decides the
+   board height is viewport-relative, so short laptops shrink instead of
+   scrolling.
+   Palette: steel greys for the pipe body, blue for flowing liquid,
+   green for a sealed/completed segment.
+   ========================================================================= */
+
+:root {
+  --steel-dark: #8fa0b6;
+  --steel-mid: #cbd6e4;
+  --steel-light: #f4f8fd;
+  --liquid-a: #29b6f6;
+  --liquid-b: #1565c0;
+  --done-a: #66bb6a;
+  --done-b: #2e7d32;
+  --ink: #0d3f83;
+  --muted: #64748b;
+
+  /* board geometry */
+  --pipe-w: 13px;
+  --valve-size: clamp(44px, 6vh, 60px);
+  --grid-row-gap: clamp(18px, 3vh, 34px);
+  --grid-col-gap: clamp(26px, 3.2vw, 58px);
+  --cross-rise: 22px; /* how far the over-the-top crossover climbs */
+  --cross-dip: 18px; /* how far the under-the-board crossover drops */
+  --step-font: clamp(1rem, 1.75vh, 1.18rem);
+}
+
+.pipelinePage {
+  min-height: calc(100vh - 130px);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(41, 121, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 88% 92%, rgba(76, 175, 80, 0.1), transparent 45%),
+    linear-gradient(180deg, #eef5ff 0%, #ffffff 45%, #e9f3ff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(14px, 2.2vh, 30px) 18px clamp(20px, 3vh, 40px);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Faint blueprint grid behind everything */
+.pipelinePage::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(13, 63, 131, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 63, 131, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 78%);
+}
+
+.pipelinePanel {
+  position: relative;
+  z-index: 1;
+  width: min(1480px, 100%);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 30px 80px rgba(33, 150, 243, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  border-radius: 26px;
+  padding: clamp(18px, 2.6vh, 30px) clamp(20px, 2.4vw, 42px)
+    clamp(18px, 2.4vh, 30px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* ------------------------------------------------------------------ header */
+.pipelineHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: clamp(10px, 1.4vh, 16px);
+}
+
+.pipelineHeader h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.45rem, 2.9vh, 2.1rem);
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.subtitle {
+  margin: 0;
+  color: #556677;
+  font-size: clamp(0.9rem, 1.6vh, 1.02rem);
+  line-height: 1.55;
+  max-width: 520px;
+}
+
+.statusBox {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+  text-align: right;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.chipDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.chip.running {
+  background: rgba(33, 150, 243, 0.14);
+  color: #0d47a1;
+  box-shadow: 0 0 15px rgba(33, 150, 243, 0.2);
+}
+
+.chip.running .chipDot {
+  animation: blinkDot 1.4s infinite;
+}
+
+.chip.done {
+  background: rgba(76, 175, 80, 0.16);
+  color: #1b5e20;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+}
+
+@keyframes blinkDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.timerBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 152, 0, 0.15);
+  color: #e65100;
+  padding: 6px 13px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.22);
+}
+
+.pathLabel {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.statusActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.stageCount {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: rgba(13, 63, 131, 0.07);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.ghostBtn {
+  border: 1px solid rgba(13, 63, 131, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ghostBtn:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------------- progress */
+.progressBar {
+  position: relative;
+  width: 100%;
+  height: clamp(20px, 2.6vh, 26px);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0 auto clamp(6px, 1.2vh, 14px);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.progressTrack {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(13, 63, 131, 0.06) 0 10px,
+      rgba(13, 63, 131, 0.02) 10px 20px
+    ),
+    rgba(15, 76, 129, 0.08);
+}
+
+.progressFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #81d4fa, #42a5f5, #1e88e5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  color: #fff;
+  font-weight: 700;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 6px 0 18px rgba(33, 150, 243, 0.45);
+}
+
+.progressFill span {
+  font-size: 0.85rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------------------------------------------------------------- pipeline */
+/* Columns and rows are handed in from the component so the serpentine maths
+   and the grid can never disagree. `1fr` rows keep every cell the same height,
+   which is what lets the connectors be positioned with plain percentages. */
+.pipeline {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  row-gap: var(--grid-row-gap);
+  column-gap: var(--grid-col-gap);
+  /* head-room for the over-the-top crossover, and for the one that dips under */
+  padding: calc(var(--cross-rise) + 6px) 0 calc(var(--cross-dip) + 12px);
+  position: relative;
+}
+
+.stepContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10px, 0.9vw, 16px);
+  text-align: left;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ------------------------------------------------------------------ valves */
+.valve {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--valve-size);
+  height: var(--valve-size);
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  background: conic-gradient(
+    from 210deg,
+    #ffffff 0deg,
+    #c3cfdd 70deg,
+    #9fb0c4 140deg,
+    #eef4fb 210deg,
+    #b6c4d5 290deg,
+    #ffffff 360deg
+  );
+  box-shadow:
+    0 6px 16px rgba(13, 63, 131, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+.valve:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 16px 30px rgba(13, 63, 131, 0.24);
+}
+
+.valve:focus-visible {
+  outline: 3px solid #2979ff;
+  outline-offset: 4px;
+}
+
+/* bolt heads around the rim */
+.valveBolts i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #f8fbff, #8a99ad);
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.valveBolts i:nth-child(1) { top: 5px; left: 50%; transform: translateX(-50%); }
+.valveBolts i:nth-child(2) { bottom: 5px; left: 50%; transform: translateX(-50%); }
+.valveBolts i:nth-child(3) { left: 5px; top: 50%; transform: translateY(-50%); }
+.valveBolts i:nth-child(4) { right: 5px; top: 50%; transform: translateY(-50%); }
+
+.valveFace {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #eaf1fa 100%);
+  box-shadow: inset 0 2px 6px rgba(13, 63, 131, 0.18);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.valveLabel {
+  font-size: clamp(1rem, 2.1vh, 1.3rem);
+  font-weight: 800;
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+/* status LED */
+.valveLed {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.25);
+}
+
+.valve.flowing .valveFace {
+  background: linear-gradient(180deg, #ffffff 0%, #dbeeff 100%);
+}
+
+.valve.active {
+  box-shadow:
+    0 0 0 4px rgba(41, 121, 255, 0.16),
+    0 14px 28px rgba(13, 63, 131, 0.22);
+  animation: valvePulse 1.8s ease-in-out infinite;
+}
+
+.valve.active .valveLabel { color: #1565c0; }
+
+.valve.active .valveLed {
+  background: #29b6f6;
+  box-shadow: 0 0 10px #29b6f6;
+  animation: blinkDot 1.1s infinite;
+}
+
+@keyframes valvePulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(41, 121, 255, 0.14), 0 14px 28px rgba(13, 63, 131, 0.2); }
+  50% { box-shadow: 0 0 0 10px rgba(41, 121, 255, 0.05), 0 14px 30px rgba(13, 63, 131, 0.28); }
+}
+
+.valve.completed .valveFace {
+  background: linear-gradient(150deg, var(--done-a) 0%, var(--done-b) 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.valve.completed .valveLabel {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.valve.completed .valveLed {
+  background: #76ff03;
+  box-shadow: 0 0 10px rgba(118, 255, 3, 0.9);
+}
+
+.valve.completed {
+  animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pop {
+  0% { transform: scale(0.75); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkles i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 1.8s ease infinite;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+}
+
+.sparkles i:nth-child(1) { top: 14%; left: 26%; animation-delay: 0.1s; }
+.sparkles i:nth-child(2) { top: 54%; right: 16%; animation-delay: 0.5s; }
+.sparkles i:nth-child(3) { bottom: 16%; left: 50%; animation-delay: 0.9s; }
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  20% { opacity: 1; transform: scale(1.2); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* ------------------------------------------------------------------- pipes */
+/* Cylinder illusion: a gradient across the pipe width gives the
+   highlight/shadow of a rounded metal tube. Every segment is absolutely
+   positioned against its stage cell, so tubes never disturb the grid. */
+.pipe {
+  position: absolute;
+  display: block;
+  z-index: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #7f8fa4 0%,
+    #b9c6d6 22%,
+    #f7fbff 42%,
+    #d3dee9 60%,
+    #a5b4c7 80%,
+    #7b8b9f 100%
+  );
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.28),
+    0 3px 8px rgba(13, 63, 131, 0.14);
+}
+
+/* --- vertical run: valve bottom → the valve of the cell underneath -------- */
+.pipe--vert,
+.pipe--vertUp {
+  top: var(--valve-size);
+  left: calc(var(--valve-size) / 2);
+  transform: translateX(-50%);
+  width: var(--pipe-w);
+  height: calc(100% - var(--valve-size) + var(--grid-row-gap));
+}
+
+/* --- crossover that dips under the board (bottom of a down-flowing column) */
+.pipe--xbStart,
+.pipe--xbEnd {
+  top: var(--valve-size);
+  transform: translateX(-50%);
+  width: var(--pipe-w);
+  height: calc(100% - var(--valve-size) + var(--cross-dip));
+}
+
+.pipe--xbStart { left: calc(var(--valve-size) / 2); }
+.pipe--xbEnd {
+  left: calc(100% + var(--grid-col-gap) + var(--valve-size) / 2);
+}
+
+.pipe--xbRun {
+  top: calc(100% + var(--cross-dip) - var(--pipe-w));
+  left: calc(var(--valve-size) / 2 - var(--pipe-w) / 2);
+  width: calc(100% + var(--grid-col-gap) + var(--pipe-w));
+  height: var(--pipe-w);
+}
+
+/* --- crossover that arcs over the top (top of an up-flowing column) ------- */
+.pipe--xtStart,
+.pipe--xtEnd {
+  top: calc(-1 * var(--cross-rise));
+  transform: translateX(-50%);
+  width: var(--pipe-w);
+  height: var(--cross-rise);
+}
+
+.pipe--xtStart { left: calc(var(--valve-size) / 2); }
+.pipe--xtEnd {
+  left: calc(100% + var(--grid-col-gap) + var(--valve-size) / 2);
+}
+
+.pipe--xtRun {
+  top: calc(-1 * var(--cross-rise));
+  left: calc(var(--valve-size) / 2 - var(--pipe-w) / 2);
+  width: calc(100% + var(--grid-col-gap) + var(--pipe-w));
+  height: var(--pipe-w);
+}
+
+/* horizontal runs need the cylinder gradient turned a quarter turn */
+.pipe--xbRun,
+.pipe--xtRun {
+  background: linear-gradient(
+    180deg,
+    #7f8fa4 0%,
+    #b9c6d6 22%,
+    #f7fbff 42%,
+    #d3dee9 60%,
+    #a5b4c7 80%,
+    #7b8b9f 100%
+  );
+}
+
+/* liquid inside the tube */
+.pipeLiquid {
+  position: absolute;
+  inset: 2px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--liquid-b), var(--liquid-a), var(--liquid-b));
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.45s ease-out;
+}
+
+.pipeFilled .pipeLiquid {
+  transform: scaleY(1);
+  background: linear-gradient(90deg, var(--done-b), var(--done-a), var(--done-b));
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.45);
+}
+
+/* segments the liquid climbs into rather than falls through */
+.pipe--vertUp .pipeLiquid,
+.pipe--xbEnd .pipeLiquid,
+.pipe--xtStart .pipeLiquid {
+  transform-origin: bottom center;
+}
+
+/* segments that fill left → right */
+.pipe--xbRun .pipeLiquid,
+.pipe--xtRun .pipeLiquid {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.pipeFilled.pipe--xbRun .pipeLiquid,
+.pipeFilled.pipe--xtRun .pipeLiquid {
+  transform: scaleX(1);
+}
+
+/* moving stripes = flow direction */
+.pipeFlow {
+  position: absolute;
+  inset: -50%;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.35) 0 6px,
+    rgba(255, 255, 255, 0) 6px 14px
+  );
+  animation: flowStripes 0.9s linear infinite;
+}
+
+@keyframes flowStripes {
+  from { transform: translateY(0); }
+  to { transform: translateY(20px); }
+}
+
+.pipe--vertUp .pipeFlow,
+.pipe--xbEnd .pipeFlow,
+.pipe--xtStart .pipeFlow {
+  animation-direction: reverse;
+}
+
+.pipe--xbRun .pipeFlow,
+.pipe--xtRun .pipeFlow {
+  animation: flowStripesX 0.9s linear infinite;
+}
+
+@keyframes flowStripesX {
+  from { transform: translateX(0); }
+  to { transform: translateX(20px); }
+}
+
+/* flanges / joints at each end */
+.flange {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  height: 7px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #7a8a9e, #eef4fb 45%, #93a2b6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+  z-index: 2;
+}
+
+.flangeStart { top: 0; }
+.flangeEnd { bottom: 0; }
+
+.pipe--xbRun .flange,
+.pipe--xtRun .flange {
+  left: auto;
+  right: auto;
+  top: -4px;
+  bottom: -4px;
+  width: 7px;
+  height: auto;
+  background: linear-gradient(180deg, #7a8a9e, #eef4fb 45%, #93a2b6);
+}
+
+.pipe--xbRun .flangeStart,
+.pipe--xtRun .flangeStart { left: 0; }
+
+.pipe--xbRun .flangeEnd,
+.pipe--xtRun .flangeEnd { left: auto; right: 0; }
+
+/* travelling bubble */
+.pipeBubble {
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px 3px rgba(41, 182, 246, 0.9);
+  animation: bubbleDown 0.35s linear forwards;
+  z-index: 3;
+}
+
+@keyframes bubbleDown {
+  from { top: -8px; opacity: 1; }
+  to { top: 100%; opacity: 0.2; }
+}
+
+.pipe--vertUp .pipeBubble,
+.pipe--xbEnd .pipeBubble,
+.pipe--xtStart .pipeBubble {
+  animation: bubbleUp 0.35s linear forwards;
+}
+
+@keyframes bubbleUp {
+  from { top: 100%; opacity: 1; }
+  to { top: -8px; opacity: 0.2; }
+}
+
+.pipe--xbRun .pipeBubble,
+.pipe--xtRun .pipeBubble {
+  top: 50%;
+  left: auto;
+  margin: -4px 0 0 0;
+  animation: bubbleRight 0.35s linear forwards;
+}
+
+@keyframes bubbleRight {
+  from { left: -8px; opacity: 1; }
+  to { left: 100%; opacity: 0.2; }
+}
+
+/* --------------------------------------------------------------- step text */
+.stepText {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 2px;
+  font-size: var(--step-font);
+  color: #10233d;
+  line-height: 1.32;
+}
+
+.stepText strong {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.textCompleted,
+.textActive,
+.textIdle {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: calc(var(--step-font) * 0.76);
+  font-weight: 700;
+}
+
+.textCompleted {
+  background: rgba(76, 175, 80, 0.13);
+  color: #2e7d32;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.16);
+}
+
+.textActive {
+  background: rgba(33, 150, 243, 0.13);
+  color: #1565c0;
+  box-shadow: 0 2px 10px rgba(33, 150, 243, 0.2);
+  animation: textPulse 2s infinite alternate;
+}
+
+.textIdle {
+  background: #f1f5f9;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@keyframes textPulse {
+  from { box-shadow: 0 2px 10px rgba(33, 150, 243, 0.18); }
+  to { box-shadow: 0 4px 16px rgba(33, 150, 243, 0.4); }
+}
+
+/* ------------------------------------------------------ completion overlay */
+.completionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(6, 24, 51, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: overlayIn 0.4s ease both;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.completionCard {
+  position: relative;
+  width: min(460px, 100%);
+  padding: 38px 32px 28px;
+  border-radius: 28px;
+  text-align: center;
+  color: #eaf2ff;
+  background: linear-gradient(160deg, #123a7a 0%, #0b2350 60%, #071a3d 100%);
+  box-shadow:
+    0 40px 90px rgba(4, 16, 40, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  animation: cardIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #eaf2ff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.closeBtn:hover { background: rgba(255, 255, 255, 0.24); }
+
+.trophy {
+  font-size: 3.2rem;
+  animation: trophyFloat 2.4s ease-in-out infinite;
+}
+
+@keyframes trophyFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+.completionTitle {
+  margin: 6px 0 10px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, #ffd54f, #fff, #81d4fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.completionLead {
+  margin: 0 auto 22px;
+  max-width: 340px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(234, 242, 255, 0.78);
+}
+
+.completionStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.statBlock {
+  padding: 14px 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.statValue {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffd54f;
+}
+
+.statLabel {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(234, 242, 255, 0.6);
+}
+
+.completionDate {
+  font-size: 0.82rem;
+  color: rgba(234, 242, 255, 0.65);
+  margin-bottom: 22px;
+}
+
+.completionDate strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.meetTeamBtn {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: #07234f;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ffd54f, #ffb300);
+  box-shadow: 0 12px 26px rgba(255, 179, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meetTeamBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(255, 179, 0, 0.45);
+}
+
+.autoClose {
+  margin-top: 18px;
+  font-size: 0.75rem;
+  color: rgba(234, 242, 255, 0.55);
+}
+
+.autoCloseTrack {
+  display: block;
+  margin-top: 8px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.autoCloseFill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #81d4fa, #ffd54f);
+  transform-origin: left center;
+  animation: drain 15s linear forwards;
+}
+
+@keyframes drain {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+/* ------------------------------------------------------------- responsive */
+/* Short screens: the app header already claims 130px above this page, so fold
+   the status block onto one line and trim the tube lengths rather than let the
+   board run past the fold. */
+@media (max-height: 860px) {
+  :root {
+    --cross-rise: 20px;
+    --cross-dip: 16px;
+  }
+  .pipelinePage { padding-top: 12px; }
+  .pipelinePanel { padding-top: 16px; padding-bottom: 16px; }
+  .pipelineHeader { align-items: center; margin-bottom: 10px; }
+  .subtitle { display: none; }
+  .statusBox {
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .pipeline {
+    padding: calc(var(--cross-rise) + 4px) 0 calc(var(--cross-dip) + 8px);
+  }
+}
+
+/* 768-tall laptops: pull the rows together too, keeping the stage text at its
+   full size — that is the part worth protecting. */
+@media (max-height: 800px) {
+  :root { --grid-row-gap: 18px; }
+}
+
+/* Below 760px the component switches to 10 rows x 2 columns, and below 480px
+   to a single file — the serpentine maths is shared, only the row count moves. */
+@media (max-width: 760px) {
+  :root {
+    --valve-size: 48px;
+    --grid-row-gap: 22px;
+    --grid-col-gap: 24px;
+    --step-font: 1rem;
+  }
+  .pipelinePage { min-height: 100vh; padding-top: 16px; }
+  .subtitle { display: block; }
+  .statusBox { grid-auto-flow: row; }
+}
+
+@media (max-width: 520px) {
+  .pipelinePanel { padding: 22px 16px 26px; }
+  .pipelineHeader { justify-content: center; }
+  .statusBox { justify-items: center; text-align: center; }
+  .statusRow, .statusActions { justify-content: center; }
+  .completionStats { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipeFlow,
+  .trophy,
+  .valve.active,
+  .textActive,
+  .sparkles i,
+  .chipDot { animation: none !important; }
+  .pipeLiquid { transition: none; }
+  .completionCard, .completionOverlay { animation: none; }
+}

@@ -1,0 +1,93 @@
+.about-page {
+  padding: 40px 0 60px;
+}
+
+.about-hero {
+  margin-bottom: 50px;
+}
+
+.about-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 20px rgba(46, 204, 113, 0.3));
+}
+
+.about-hero h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  font-size: 18px;
+}
+
+.about-mission {
+  padding: 40px;
+}
+
+.about-mission h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--primary-green);
+}
+
+.about-mission p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+.dark-mode .about-mission p {
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.about-stats-grid {
+  gap: 20px;
+}
+
+.stat-card {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--yellow-accent);
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.about-team {
+  padding: 50px;
+}
+
+.about-team h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.team-story {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+@media (max-width: 992px) {
+  .about-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
