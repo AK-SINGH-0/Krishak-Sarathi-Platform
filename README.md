@@ -31,8 +31,10 @@ review purposes. Access to the source code does not grant ownership or any
 license to copy, reuse, or redistribute the project.
 
 Development Team:
-• Sushil Kumar – Frontend Development & Tech Lead
-• Ankush Kumar – Presentation, Documentation, Content, Planning and Project Lead
+• Sushil Kumar – Frontend Development
+
+• Ankush Kumar – Technical Support, Presentation, Documentation, Content, Planning and Project Lead
+
 • Bijanshu Yadav – AI/ML & Backend Development
 
 For permissions or licensing inquiries, contact the Project Owner directly.
